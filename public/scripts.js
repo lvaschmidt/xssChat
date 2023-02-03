@@ -15,7 +15,7 @@ const checkbox = document.getElementById("toggle");
 var socket = io();
 
 //join form overlay event handler
-joinform.addEventListener('submit', function (e) {
+joinform.addEventListener("submit", function (e) {
     e.preventDefault();
     if (roomcode.value) {
         socket.emit("join", roomcode.value);
@@ -24,7 +24,8 @@ joinform.addEventListener('submit', function (e) {
     overlay.style.pointerEvents = "none";
 });
 
-msgform.addEventListener('submit', function (e) {
+//submit message
+msgform.addEventListener("submit", function (e) {
     e.preventDefault();
     if (input.value) {
         if(checkbox.checked) {
@@ -40,6 +41,32 @@ msgform.addEventListener('submit', function (e) {
     }
 });
 
+//tab for element completion
+msgform.addEventListener("keydown", function (e) {
+    if(e.code=="Tab") {
+        e.preventDefault();
+        let message = input.value;
+        let cursorPosition = input.selectionStart;
+        let elemName = message.substring(0,cursorPosition).split(" ").pop().split(">").pop();
+        let insertIndex = cursorPosition - elemName.length;
+        try {
+            if(document.createElement(elemName.toLowerCase()).toString() == "[object HTMLUnknownElement]") {
+                return;
+            }
+            
+        } catch(e){
+            console.log(e);
+            input.focus();
+            return;
+        }
+        let elem = `<${elemName}></${elemName}>`;
+        let newInput = message.slice(0, insertIndex)+elem+message.slice(cursorPosition);
+        input.value = newInput;
+        cursorPosition = (message.slice(0, insertIndex)+elem).length - `</${elemName}>`.length;
+        input.setSelectionRange(cursorPosition, cursorPosition);
+    }
+});
+
 socket.on('chat', function (msg) {
     let item = document.createElement('li');
     item.innerHTML = msg;
@@ -52,5 +79,3 @@ socket.on('script', function (msg) {
     item.innerHTML = msg;
     body.appendChild(item);
 });
-
-addEventListener("submit", (e)=>e.preventDefault());

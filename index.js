@@ -1,26 +1,33 @@
-var cors = require('cors')
-const app = require('express')();
+//https://socket.io/docs/v4/server-initialization/
+
+const http = require('http').createServer((req, res) => {
+    const headers = {
+        'Access-Control-Allow-Origin': '*', /* @dev First, read about security */
+        'Access-Control-Allow-Methods': 'OPTIONS, POST, GET',
+        'Access-Control-Max-Age': 2592000, // 30 days
+        /** add other headers as per requirement */
+    };
+
+    if (req.method === 'OPTIONS') {
+        res.writeHead(204, headers);
+        res.end();
+        return;
+    }
+
+    if (['GET', 'POST'].indexOf(req.method) > -1) {
+        res.writeHead(200, headers);
+        res.end('Hello World');
+        return;
+    }
+
+    res.writeHead(405, headers);
+    res.end(`${req.method} is not allowed for the request.`);
+})
 
 
-
-const http = require('http').Server(app);
 const io = require('socket.io')(http);
-const port = process.env.PORT || 80;
+const port = process.env.PORT || 3000;
 
-app.options('*', cors())
-
-
-//run a shell command to encode two qr codes
-const { exec } = require("child_process");
-const hostname = Object.values(require('os').networkInterfaces()).reduce((r, list) => r.concat(list.reduce((rr, i) => rr.concat(i.family === 'IPv4' && !i.internal && i.address || []), [])), [])
-exec(`qrencode -o transfer.png -s 16 "http://${hostname}/QR"`)
-exec(`qrencode -o qr.png -s 16 "http://${hostname}"`)
-
-
-
-app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/index.html');
-});
 
 io.on('connection', (socket) => {
     let room = null;
@@ -37,5 +44,5 @@ io.on('connection', (socket) => {
 });
 
 http.listen(port, () => {
-    console.log(`Socket.IO server running at http://${hostname}:${port}/`);
+    console.log(`Socket.IO server running port ${port}`);
 });

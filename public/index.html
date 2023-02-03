@@ -62,8 +62,6 @@
 </head>
 
 <body>
-    <!-- height is 20 percent of window height -->
-    <center><img src="/transfer" width="25%"></center>
     <ul id="messages"></ul>
     <form id="form" action="">
         <input id="input" autocomplete="off" /><button>Send</button>
@@ -72,7 +70,7 @@
     <!-- <script src="http://localhost/socket.io/socket.io.js"></script> -->
 
     <script>
-        var socket = io();
+        var socket = io(window.location.protocol + '//' + window.location.hostname + ":3000");
 
         var messages = document.getElementById('messages');
         var form = document.getElementById('form');

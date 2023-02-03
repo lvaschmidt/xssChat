@@ -9,22 +9,6 @@ const port = process.env.PORT || 80;
 
 app.options('*', cors())
 
-// const { subtle } = globalThis.crypto;
-// async function generateEcKey(namedCurve = 'P-521') {
-//     const {
-//         publicKey,
-//         privateKey,
-//     } = await subtle.generateKey({
-//         name: 'ECDSA',
-//         namedCurve,
-//     }, true, ['sign', 'verify']);
-
-//     return { publicKey, privateKey };
-// }
-// generateEcKey().then(console.log)
-
-
-
 
 //run a shell command to encode two qr codes
 const { exec } = require("child_process");

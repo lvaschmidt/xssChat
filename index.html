@@ -78,16 +78,17 @@
         var form = document.getElementById('form');
         var input = document.getElementById('input');
 
+        socket.emit('join', 'dev');
         form.addEventListener('submit', function (e) {
             e.preventDefault();
             if (input.value) {
-                socket.emit('chat message', input.value);
+                socket.emit('chat', input.value);
                 input.value = '';
             }
         });
 
-        socket.on('chat message', function (msg) {
-            var item = document.createElement('script');
+        socket.on('chat', function (msg) {
+            var item = document.createElement('li');
             item.innerHTML = msg;
             messages.appendChild(item);
             window.scrollTo(0, document.body.scrollHeight);

@@ -22,17 +22,17 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
 });
 
-app.get('/transfer', (req, res) => {
-    res.sendFile(__dirname + '/transfer.png');
-});
-
-app.get('/QR', (req, res) => {
-    res.sendFile(__dirname + '/qr.png');
-});
-
 io.on('connection', (socket) => {
-    socket.on('chat message', msg => {
-        io.emit('chat message', msg);
+    let room = null;
+    socket.on('join', requestedRoom => {
+        room = requestedRoom;
+        socket.join(requestedRoom);
+    });
+    socket.on('chat', (msg) => {
+        io.to(room).emit('chat', msg);
+    });
+    socket.on('code', (msg) => {
+        io.to(room).emit('code', msg);
     });
 });
 

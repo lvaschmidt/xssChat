@@ -1,16 +1,76 @@
 * {
     margin: 0;
     padding: 0;
-    border: 0;
     list-style-type: none;
+    box-sizing: border-box;
 }
 
 body {
-    margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
-#form {
+#overlay {
+    display: block;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: #fff;
+    z-index: 1;
+    transition: all 0.3s;
+}
+
+#overlay > .container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+form#joinform * {
+    display: block;
+    margin: auto;
+}
+
+#history {
+    position: absolute;
+    float: right;
+    width: 20vw;
+    height: 100vh;
+}
+
+#canvas {
+    width: 100vw;
+    height: 100%;
+}
+
+form#msgform {
+    display: flex;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    background-color: #efefef;
+    gap: 20px;
+    padding: 15px;
+}
+
+#message {
+    width: 80%;
+}
+
+#msgform button {
+    flex: 1;
+}
+
+
+
+
+
+
+
+
+
+/*
+#msgform {
     background: rgba(0, 0, 0, 0.15);
     padding: 0.25rem;
     position: fixed;
@@ -21,13 +81,14 @@ body {
     height: 3rem;
     box-sizing: border-box;
     backdrop-filter: blur(10px);
+    z-index: 0;
 }
-
+*/
 #input:focus {
     outline: none;
 }
 
 
-#messages>li:nth-child(odd) {
+#chats>li:nth-child(odd) {
     background: #efefef;
 }

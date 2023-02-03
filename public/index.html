@@ -6,32 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>XSSchat</title>
     <script defer src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
-    <script src="scripts.js"></script>
     <link rel="stylesheet" href="styles.css">
+    <script defer src="scripts.js"></script>
 </head>
-<body>
-    
-</body>
-</html>
 
 <body>
     <div id="overlay">
-        <h1>Choose a room code:</h1>
-        <form action="">
-            <input type="text" id="roomcode">
-            <button>Enter</button>
-        </form>
+        <div class="container">
+            <h1>Choose a room code:</h1>
+            <form id="joinform" action="">
+                <input type="text" id="roomcode" autocomplete="off">
+                <button>Enter</button>
+            </form>
+        </div>
     </div>
+
     <div id="history">
         <ul id="scripthistory"></ul>
     </div>
+
     <div id="canvas">
         <ul id="chats"></ul>
     </div>
-    <form id="form" action="">
-        <input id="message" autocomplete="off" />
-        <div>
 
+    <form id="msgform" action="">
+        <input id="message" autocomplete="off">
+        <div id="switch">
+            <input type="checkbox" id="toggle">
         </div>
         <button>Send</button>
     </form>

@@ -19,15 +19,7 @@ exec(`qrencode -o qr.png -s 16 "http://${hostname}"`)
 
 
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/index.html');
-});
-
-app.get('/transfer', (req, res) => {
-    res.sendFile(__dirname + '/transfer.png');
-});
-
-app.get('/QR', (req, res) => {
-    res.sendFile(__dirname + '/qr.png');
+    res.sendFile(__dirname + '/public/index.html');
 });
 
 io.on('connection', (socket) => {

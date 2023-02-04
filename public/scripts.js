@@ -72,7 +72,7 @@ socket.on('chat', function (msg) {
     let item = document.createElement('li');
     item.innerHTML = msg;
     chats.appendChild(item);
-    window.scrollTo(0, document.body.scrollHeight);
+    item.scrollIntoView(false);
 });
 
 socket.on('script', function (msg) {

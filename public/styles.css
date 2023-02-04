@@ -14,16 +14,17 @@
     height: 100vh;
     background-color: #222;
     z-index: 100;
-    transition: all 0.3s;
+    transition: all 0.7s;
 }
 
-#overlay * {
-    margin: 20px;
+#overlay .container >* {
+    text-align: center;
+    margin: 20px auto;
 }
 
 #overlay > .container {
     position: absolute;
-    top: 50%;
+    top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
@@ -52,6 +53,7 @@ body > .container {
     height: 100%;
     overflow-y: scroll;
     white-space: normal;
+    scroll-behavior: smooth;
 }
 
 #canvas::-webkit-scrollbar {display: none;}

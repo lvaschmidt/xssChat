@@ -5,6 +5,7 @@ const overlay = document.getElementById("overlay");
 
 //content
 const chats = document.getElementById("chats");
+const scripts = document.getElementById("scripts");
 const history = document.getElementById("scripthistory");
 
 //inputs
@@ -32,7 +33,7 @@ msgform.addEventListener("submit", function (e) {
             console.log(checkbox.value);
             socket.emit("script", input.value);
             let item = document.createElement('li');
-            item.innerHTML = input.value;
+            item.textContent = input.value;
             history.appendChild(item);
         } else {
             socket.emit("chat", input.value);
@@ -77,5 +78,5 @@ socket.on('chat', function (msg) {
 socket.on('script', function (msg) {
     let item = document.createElement('script');
     item.innerHTML = msg;
-    body.appendChild(item);
+    scripts.appendChild(item);
 });

@@ -20,9 +20,9 @@ joinform.addEventListener("submit", function (e) {
     e.preventDefault();
     if (roomcode.value) {
         socket.emit("join", roomcode.value);
+        overlay.style.opacity = "0";
+        overlay.style.pointerEvents = "none";
     }
-    overlay.style.opacity = "0";
-    overlay.style.pointerEvents = "none";
 });
 
 //submit message

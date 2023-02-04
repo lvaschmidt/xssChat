@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 
 const https = require("https");
-const fs = request("fs");
+const fs = require("fs");
 
 const privateKey = fs.readFileSync('/etc/letsencrypt/live/xsschat.com/privkey.pem');
 const certificate = fs.readFileSync('/etc/letsencrypt/live/xsschat.com/fullchain.pem');

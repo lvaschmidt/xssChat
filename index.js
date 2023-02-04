@@ -2,16 +2,20 @@ var cors = require('cors');
 const express = require("express");
 const app = express();
 
+const https = require("https");
+const fs = request("fs");
 
+const privateKey = fs.readFileSync('/etc/letsencrypt/live/xsschat.com/privkey.pem');
+const certificate = fs.readFileSync('/etc/letsencrypt/live/xsschat.com/fullchain.pem');
+const credentials = { key: privateKey, cert: certificate };
 
-const http = require('http').Server(app);
-const io = require('socket.io')(http);
-const port = process.env.PORT || 80;
+const httpsServer = https.Server(credentials, app);
+const io = require('socket.io')(httpsServer);
+const port = process.env.PORT || 443;
 
 app.options('*', cors());
 app.use(express.static('public'))
 
-const hostname = Object.values(require('os').networkInterfaces()).reduce((r, list) => r.concat(list.reduce((rr, i) => rr.concat(i.family === 'IPv4' && !i.internal && i.address || []), [])), [])
 
 io.on('connection', (socket) => {
     let room = null;
@@ -27,6 +31,6 @@ io.on('connection', (socket) => {
     });
 });
 
-http.listen(port, () => {
-    console.log(`Socket.IO server running at http://${hostname}:${port}/`);
+httpsServer.listen(port, () => {
+    console.log(`Socket.IO server running of port ${port}!`);
 });

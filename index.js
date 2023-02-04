@@ -9,15 +9,6 @@ const port = process.env.PORT || 80;
 
 app.options('*', cors())
 
-
-//run a shell command to encode two qr codes
-const { exec } = require("child_process");
-const hostname = Object.values(require('os').networkInterfaces()).reduce((r, list) => r.concat(list.reduce((rr, i) => rr.concat(i.family === 'IPv4' && !i.internal && i.address || []), [])), [])
-exec(`qrencode -o transfer.png -s 16 "http://${hostname}/QR"`)
-exec(`qrencode -o qr.png -s 16 "http://${hostname}"`)
-
-
-
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/public/index.html');
 });

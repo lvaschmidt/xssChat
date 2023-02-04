@@ -22,8 +22,8 @@ io.on('connection', (socket) => {
     socket.on('chat', (msg) => {
         io.to(room).emit('chat', msg);
     });
-    socket.on('code', (msg) => {
-        io.to(room).emit('code', msg);
+    socket.on('script', (msg) => {
+        io.to(room).emit('script', msg);
     });
 });
 

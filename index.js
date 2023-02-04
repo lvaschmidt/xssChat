@@ -14,8 +14,16 @@ app.get('/', (req, res) => {
 });
 
 io.on('connection', (socket) => {
-    socket.on('chat message', msg => {
-        io.emit('chat message', msg);
+    let room = null;
+    socket.on('join', requestedRoom => {
+        room = requestedRoom;
+        socket.join(requestedRoom);
+    });
+    socket.on('chat', (msg) => {
+        io.to(room).emit('chat', msg);
+    });
+    socket.on('code', (msg) => {
+        io.to(room).emit('code', msg);
     });
 });
 

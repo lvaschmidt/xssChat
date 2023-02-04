@@ -1,5 +1,6 @@
-var cors = require('cors')
-const app = require('express')();
+var cors = require('cors');
+const express = require("express");
+const app = express();
 
 
 
@@ -7,11 +8,10 @@ const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const port = process.env.PORT || 80;
 
-app.options('*', cors())
+app.options('*', cors());
+app.use(express.static('public'))
 
-app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/public/index.html');
-});
+const hostname = Object.values(require('os').networkInterfaces()).reduce((r, list) => r.concat(list.reduce((rr, i) => rr.concat(i.family === 'IPv4' && !i.internal && i.address || []), [])), [])
 
 io.on('connection', (socket) => {
     let room = null;

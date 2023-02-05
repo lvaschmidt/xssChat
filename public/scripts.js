@@ -1,5 +1,6 @@
 //choosing room
 const roomcode = document.getElementById("roomcode");
+const namefield = document.getElementById("namefield");
 const joinform = document.getElementById("joinform");
 const overlay = document.getElementById("overlay");
 
@@ -18,12 +19,16 @@ let params = new URLSearchParams(window.location.search);
 roomcode.value = params.get("room");
 
 var socket = io();
+var username = "Anonymous";
 
 //join form overlay event handler
 joinform.addEventListener("submit", function (e) {
     e.preventDefault();
+    if(namefield.value) {
+        username = namefield.value;
+    }
     if (roomcode.value) {
-        socket.emit("join", roomcode.value);
+        socket.emit("join", {room: roomcode.value, name: username});
         overlay.style.opacity = "0";
         overlay.style.pointerEvents = "none";
 
@@ -39,12 +44,12 @@ msgform.addEventListener("submit", function (e) {
     if (input.value) {
         if(checkbox.checked) {
             console.log(checkbox.value);
-            socket.emit("script", input.value);
+            socket.emit("message", {type: "script", name: username, value: input.value});
             let item = document.createElement('li');
             item.textContent = input.value;
             history.appendChild(item);
         } else {
-            socket.emit("chat", input.value);
+            socket.emit("message", {type: "chat", name: username, value: input.value});
         }
         input.value = '';
     }
@@ -76,15 +81,22 @@ msgform.addEventListener("keydown", function (e) {
     }
 });
 
-socket.on('chat', function (msg) {
-    let item = document.createElement('li');
-    item.innerHTML = msg;
-    chats.appendChild(item);
-    item.scrollIntoView(false);
+socket.on('message', function (msg) {
+    if(msg.type==script) {
+        let item = document.createElement('script');
+        item.innerHTML = msg.value;
+        scripts.appendChild(item);
+    } else {
+        let item = document.createElement('li');
+        item.innerHTML = `<b>${msg.name}</b>: ${msg.value}`;
+        chats.appendChild(item);
+        item.scrollIntoView(false);
+    }
 });
 
-socket.on('script', function (msg) {
-    let item = document.createElement('script');
-    item.innerHTML = msg;
-    scripts.appendChild(item);
+socket.on('join', function (name) {
+    let item = document.createElement('li');
+    item.innerHTML = `<b>${name}</b> has joined.`;
+    chats.appendChild(item);
+    item.scrollIntoView(false);
 });

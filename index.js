@@ -19,15 +19,13 @@ app.use(express.static('public'))
 
 io.on('connection', (socket) => {
     let room = null;
-    socket.on('join', requestedRoom => {
-        room = requestedRoom;
-        socket.join(requestedRoom);
+    socket.on('join', data => {
+        room = data.room;
+        socket.join(room);
+        io.to(room).emit('join', data.name);
     });
-    socket.on('chat', (msg) => {
-        io.to(room).emit('chat', msg);
-    });
-    socket.on('script', (msg) => {
-        io.to(room).emit('script', msg);
+    socket.on('message', (msg) => {
+        io.to(room).emit('message', msg);
     });
 });
 

@@ -13,6 +13,10 @@ const msgform = document.getElementById("msgform");
 const input = document.getElementById("message");
 const checkbox = document.getElementById("toggle");
 
+//read url params
+let params = new URLSearchParams(window.location.search);
+roomcode.value = params.get("room");
+
 var socket = io();
 
 //join form overlay event handler
@@ -22,6 +26,10 @@ joinform.addEventListener("submit", function (e) {
         socket.emit("join", roomcode.value);
         overlay.style.opacity = "0";
         overlay.style.pointerEvents = "none";
+
+        let url = new URL(window.location.href);
+        url.searchParams.set("room", roomcode.value);
+        window.history.replaceState(null, null, url);
     }
 });
 

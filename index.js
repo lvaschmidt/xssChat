@@ -1,41 +1,34 @@
-var cors = require('cors')
-const app = require('express')();
+var cors = require('cors');
+const express = require("express");
+const app = express();
 
+const https = require("https");
+const fs = require("fs");
 
+const privateKey = fs.readFileSync('/etc/letsencrypt/live/xsschat.com/privkey.pem');
+const certificate = fs.readFileSync('/etc/letsencrypt/live/xsschat.com/fullchain.pem');
+const credentials = { key: privateKey, cert: certificate };
 
-const http = require('http').Server(app);
-const io = require('socket.io')(http);
-const port = process.env.PORT || 80;
+const httpsServer = https.Server(credentials, app);
+const io = require('socket.io')(httpsServer);
+const port = process.env.PORT || 443;
 
-app.options('*', cors())
+app.options('*', cors());
+app.use(express.static('public'))
 
-
-//run a shell command to encode two qr codes
-const { exec } = require("child_process");
-const hostname = Object.values(require('os').networkInterfaces()).reduce((r, list) => r.concat(list.reduce((rr, i) => rr.concat(i.family === 'IPv4' && !i.internal && i.address || []), [])), [])
-exec(`qrencode -o transfer.png -s 16 "http://${hostname}/QR"`)
-exec(`qrencode -o qr.png -s 16 "http://${hostname}"`)
-
-
-
-app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/index.html');
-});
 
 io.on('connection', (socket) => {
     let room = null;
-    socket.on('join', requestedRoom => {
-        room = requestedRoom;
-        socket.join(requestedRoom);
+    socket.on('join', data => {
+        room = data.room;
+        socket.join(room);
+        io.to(room).emit('join', data.name);
     });
-    socket.on('chat', (msg) => {
-        io.to(room).emit('chat', msg);
-    });
-    socket.on('code', (msg) => {
-        io.to(room).emit('code', msg);
+    socket.on('message', (msg) => {
+        io.to(room).emit('message', msg);
     });
 });
 
-http.listen(port, () => {
-    console.log(`Socket.IO server running at http://${hostname}:${port}/`);
+httpsServer.listen(port, () => {
+    console.log(`Socket.IO server running of port ${port}!`);
 });

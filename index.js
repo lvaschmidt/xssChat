@@ -1,5 +1,7 @@
 var cors = require('cors');
 const express = require("express");
+const compression = require('compression'); //depends on: npm install compression
+app.use(compression());
 const app = express();
 
 const https = require("https");

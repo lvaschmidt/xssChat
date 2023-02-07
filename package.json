@@ -1,14 +1,15 @@
 {
   "name": "xssChat",
   "version": "1.0.0",
-  "description": "Allows Simple Chat in Class",
+  "description": "Chat. With XSS.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Lysander Schmidt, Alex Foster",
+  "author": "Lysander Schmidt, Alex Foster, Jacob Singer",
   "license": "ISC",
   "dependencies": {
+    "compression": "^1.7.4",
     "cors": "^2.8.5",
     "express": "^4.18.2",
     "socket.io": "^4.5.4"

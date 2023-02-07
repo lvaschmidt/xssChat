@@ -1,6 +1,6 @@
 var cors = require('cors');
 const express = require("express");
-const compression = require('compression'); //depends on: npm install compression
+const compression = require('compression'); //depends on: C
 const app = express();
 app.use(compression());
 

@@ -7,13 +7,6 @@
     font-size: 1em;
 }
 
-h1 {
-    font-size: 3em;
-    font-weight: 700;
-    color: #ffa500;
-    line-height: 1em;
-}
-
 #overlay {
     display: block;
     position: fixed;
@@ -24,7 +17,14 @@ h1 {
     transition: all 0.7s;
 }
 
-#overlay .container >* {
+#overlay > h1 {
+    font-size: 3em;
+    font-weight: 700;
+    color: #ffa500;
+    line-height: 1em;
+}
+
+#overlay .container > * {
     text-align: center;
     margin: 20px auto;
 }
@@ -46,7 +46,8 @@ h1 {
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        Helvetica, Arial, sans-serif;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -67,19 +68,21 @@ body > .container {
     scroll-behavior: smooth;
 }
 
-#canvas::-webkit-scrollbar {display: none;}
+#canvas::-webkit-scrollbar {
+    display: none;
+}
 
 #history {
     position: absolute;
-    right:0;
-    top:0;
+    right: 0;
+    top: 0;
     margin-right: -350px;
     width: 350px;
     height: 100%;
     background-color: #444;
     transition: all 0.3s;
     z-index: 25;
-    filter: drop-shadow(0px 7px 7px rgba(0,0,0,0.2));
+    filter: drop-shadow(0px 7px 7px rgba(0, 0, 0, 0.2));
 }
 #history:hover {
     margin-right: 0;
@@ -90,9 +93,9 @@ body > .container {
     position: relative;
     width: var(--grabber-width);
     height: var(--grabber-width);
-    left: calc(-1*0.5*var(--grabber-width));
+    left: calc(-1 * 0.5 * var(--grabber-width));
     top: 25px;
-    border-radius: calc(0.5*var(--grabber-width));
+    border-radius: calc(0.5 * var(--grabber-width));
     background-color: #444;
     z-index: 20;
 }
@@ -118,7 +121,7 @@ li {
     padding: 15px;
     background-color: #333;
     z-index: 50;
-    filter: drop-shadow(0px 5px 7px rgba(0,0,0,0.2));
+    filter: drop-shadow(0px 5px 7px rgba(0, 0, 0, 0.2));
     align-items: center;
 }
 
@@ -163,7 +166,7 @@ button {
 }
 
 #msgform label:after {
-    content: '';
+    content: "";
     position: absolute;
     top: 1.5px;
     left: 1.5px;
@@ -179,16 +182,9 @@ button {
 }
 
 input:checked + label:after {
-    left:100%;
+    left: 100%;
     transform: translateX(110%);
 }
-
-
-
-
-
-
-
 
 /*
 #msgform {
@@ -209,9 +205,9 @@ input:checked + label:after {
     outline: none;
 }
 
-#chats>li:nth-child(even) {
+#chats > li:nth-child(even) {
     background-color: #222;
 }
-#chats>li:nth-child(odd) {
+#chats > li:nth-child(odd) {
     background-color: #333;
 }

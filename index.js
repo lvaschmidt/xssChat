@@ -14,14 +14,15 @@ const io = require('socket.io')(httpsServer);
 const port = process.env.PORT || 443;
 
 // redirect any page from http to https
+const http = require('http')
 
-
-const httpServer = http.createServer((req,res)=>{
-  if (process.env.NODE_ENV !== 'development' && process.env.NODE_ENV !== 'test' && !isSecure(req)) {
-    res.redirect(301, `https://${req.headers.host}${req.url}`);
-  } else {
-    next();
-  }
+const httpServer = http.createServer((req, res, next) => {
+    if (process.env.NODE_ENV !== 'development' && process.env.NODE_ENV !== 'test') {
+        res.writeHead(301, { Location: `https://${req.headers.host}${req.url}` });
+        res.end()
+    } else {
+        next();
+    }
 }).listen(80);
 
 app.options('*', cors());

@@ -1,6 +1,6 @@
 var cors = require('cors');
 const express = require("express");
-const compression = require('compression'); //depends on: C
+const compression = require('compression'); //depends on: compression
 const app = express();
 app.use(compression());
 

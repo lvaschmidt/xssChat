@@ -5,6 +5,9 @@ const app = express();
 const fs = require("fs");
 const privateKey = fs.readFileSync('/etc/letsencrypt/live/xsschat.com/privkey.pem');
 const certificate = fs.readFileSync('/etc/letsencrypt/live/xsschat.com/fullchain.pem');
+const options = {
+    maxHttpBufferSize: 1e8
+};
 
 app.use(compression());
 
@@ -15,7 +18,7 @@ const httpsServer = require("http2").createSecureServer({
     cert: certificate
   });
 
-const io = require('socket.io')(httpsServer);
+const io = require('socket.io')(httpsServer, options);
 const port = process.env.PORT || 443;
 
 // redirect any page from http to https

@@ -18,7 +18,7 @@ XSSchat is a chat app that allows users to send and receive messages that contai
 
 -   Visit <www.xsschat.com>, chose a username, and join a room.
 -   The toggle button allows you to switch between html and script modes.
--   Autocomplete is supported. For example, type 'h1' and press tab to get '<h1></h1>'.
+-   Autocomplete is supported. For example, type 'h1' and press tab to get `<h1> </h1>`.
 
 ### Contributing
 

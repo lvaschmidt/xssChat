@@ -21,6 +21,14 @@ const httpsServer = require("http2").createSecureServer({
 const io = require('socket.io')(httpsServer, options);
 const port = process.env.PORT || 443;
 
+//beta.xsschat.com
+routerSub.use((req, res, next) => {
+    console.log('routerSub called');
+    next();
+  });
+  routerSub.use(express.static(baseUrl + 'sub/', staticOpts));
+
+  
 // redirect any page from http to https
 const http = require('http');
 const httpServer = http.createServer((req, res, next) => {

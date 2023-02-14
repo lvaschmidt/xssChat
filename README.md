@@ -12,13 +12,13 @@ XSSchat is a chat app that allows users to send and receive messages that contai
 
 ### Installation
 
-    XSSchat is a web app, so you don't need to install anything on your device. Simply visit our [https://www.xsschat.com](website) to start using the app.
+    XSSchat is a web app, so you don't need to install anything on your device. Simply visit our <https://www.xsschat.com> to start using the app.
 
 ### Getting Started
 
-    Visit www.xsschat.com, chose a username, and join a room.
+    Visit <www.xsschat.com>, chose a username, and join a room.
     The toggle button allows you to switch between html and script modes.
-    Autocomplte is supported. For example, type 'h1' and press tab to get '<h1></h1>'.
+    Autocomplete is supported. For example, type 'h1' and press tab to get '<h1></h1>'.
 
 ### Contributing
 

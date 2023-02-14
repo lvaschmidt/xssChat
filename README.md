@@ -8,7 +8,7 @@ XSSchat is a chat app that allows you to communicate with your friends, with a t
 
     Secure communication: we use TLS.
     Group chat: Any one can make a room or join an existing room.
-    Emoji support: You can express your emotions using a variety of emojis available in the app.
+    XSS: Script to your heart's content: the sky's the limit!
 
 ### Installation
 
@@ -31,4 +31,3 @@ XSSchat is a chat app that allows you to communicate with your friends, with a t
 ### License
 
      XSSchat is licensed under the ISC license.
-

@@ -12,7 +12,7 @@ XSSchat is a chat app that allows users to send and receive messages that contai
 
 ### Installation
 
--   XSSchat is a web app, so you don't need to install anything on your device. Simply visit our <https://www.xsschat.com> to start using the app.
+-   XSSchat is a web app, so you don't need to install anything on your device. Simply visit our <www.xsschat.com> to start using the app.
 
 ### Getting Started
 

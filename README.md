@@ -2,7 +2,7 @@
 
 ## Chat. With XSS.
 
-XSSchat is a chat app that allows you to communicate with your friends, with a twist: we allow XSS. That's right, you can send messages with XSS payloads and see them executed in real-time.
+XSSchat is a chat app that allows users to send and receive messages that contain HTML and JavaScript code. This feature enables users to customize their messages with rich formatting, interactive elements, and dynamic content. However, it also exposes users to the risk of cross site scripting (XSS) attacks, where malicious code can be injected into the messages and executed by the recipients' browsers. XSSchat does not filter or sanitize the messages, so users are responsible for their own security and privacy. Users should only use XSSchat with trusted contacts and avoid clicking on suspicious links or opening unknown attachments. XSSchat is intended for educational and experimental purposes only and is not recommended for production use.
 
 ### Features
 

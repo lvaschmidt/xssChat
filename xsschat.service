@@ -3,8 +3,8 @@ Description=xsschat.com express.js server
 
 [Service]
 Type=simple
-ExecStart=/usr/local/bin/node /sites/xsschat.com/index.js
-WorkingDirectory=/sites/xsschat.com/
+ExecStart=/usr/local/bin/node /sites/xsschat/index.js
+WorkingDirectory=/sites/xsschat/
 
 User=webmaster
 

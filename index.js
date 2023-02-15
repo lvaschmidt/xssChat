@@ -31,6 +31,8 @@ const httpServer = http.createServer((req, res, next) => {
         next();
     } 
 }).listen(80);
+
+app.disable('x-powered-by');
 app.options('*', cors());
 app.use(express.static('public'))
 

@@ -1,10 +1,10 @@
 [Unit]
-Description=xsschat.com express.js server
+Description=xsschat.com express js server
 
 [Service]
 Type=simple
-ExecStart=/usr/local/bin/node /sites/xsschat/index.js
-WorkingDirectory=/sites/xsschat/
+ExecStart=/usr/local/bin/node /sites/xssChat/index.js
+WorkingDirectory=/sites/xssChat/
 
 User=webmaster
 

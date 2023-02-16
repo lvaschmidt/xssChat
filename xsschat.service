@@ -1,0 +1,26 @@
+[Unit]
+Description=xsschat.com express.js server
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/node /sites/xsschat/index.js
+WorkingDirectory=/sites/xsschat/
+
+User=webmaster
+
+# Environment variables:
+Environment=NODE_ENV=production
+
+# Allow many incoming connections
+LimitNOFILE=infinity
+
+# Allow core dumps for debugging
+LimitCORE=infinity
+
+StandardInput=null
+StandardOutput=null
+StandardError=null
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

@@ -11,12 +11,17 @@ const options = {
 
 app.use(compression());
 
+const https = require("https");
+const credentials = { key: privateKey, cert: certificate };
+const httpsServer = https.Server(credentials, app);
+/*
 //http2 over TLS server
 const httpsServer = require("http2").createSecureServer({
     allowHTTP1: true,
     key: privateKey,
     cert: certificate
   });
+*/
 
 const io = require('socket.io')(httpsServer, options);
 const port = process.env.PORT || 443;

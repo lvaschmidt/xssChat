@@ -6,8 +6,6 @@ Type=simple
 ExecStart=/snap/bin/node /sites/xssChat/index.js
 WorkingDirectory=/sites/xssChat/
 
-User=webmaster
-
 # Environment variables:
 Environment=NODE_ENV=production
 

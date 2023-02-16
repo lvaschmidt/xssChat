@@ -3,7 +3,7 @@ Description=xsschat.com express js server
 
 [Service]
 Type=simple
-ExecStart=/usr/local/bin/node /sites/xssChat/index.js
+ExecStart=/snap/bin/node /sites/xssChat/index.js
 WorkingDirectory=/sites/xssChat/
 
 User=webmaster

@@ -1,12 +1,10 @@
 [Unit]
-Description=xsschat.com express.js server
+Description=xsschat.com express js server
 
 [Service]
 Type=simple
-ExecStart=/usr/local/bin/node /sites/xsschat.com/alpha/xsschat/index.js
-WorkingDirectory=/sites/xsschat.com/xsschat/alpha
-
-User=webmaster
+ExecStart=/snap/bin/node /sites/xssChat/index.js
+WorkingDirectory=/sites/xssChat/
 
 # Environment variables:
 Environment=NODE_ENV=production

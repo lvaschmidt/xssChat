@@ -27,7 +27,3 @@ XSSchat is a chat app that allows users to send and receive messages that contai
 ### Issues
 
 -   If you encounter any issues with the app, please report them on our GitHub issue tracker.
-
-### License
-
--   XSSchat is licensed under the ISC license.

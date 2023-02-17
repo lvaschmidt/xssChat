@@ -24,6 +24,10 @@ XSSchat is a chat app that allows users to send and receive messages that contai
 
 -   XSSchat is an open-source project, and we welcome contributions from the community. If you want to contribute to the project, please fork the repository and submit a pull request.
 
+### License
+
+-   This software is free to use via xsschat.com. All rights reserved, including but not limited to distribution, commerical use, duplication, and modification.
+
 ### Issues
 
 -   If you encounter any issues with the app, please report them on our GitHub issue tracker.

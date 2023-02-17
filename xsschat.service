@@ -1,0 +1,24 @@
+[Unit]
+Description=xsschat.com express js server
+
+[Service]
+Type=simple
+ExecStart=/snap/bin/node /sites/xssChat/index.js
+WorkingDirectory=/sites/xssChat/
+
+# Environment variables:
+Environment=NODE_ENV=production
+
+# Allow many incoming connections
+LimitNOFILE=infinity
+
+# Allow core dumps for debugging
+LimitCORE=infinity
+
+StandardInput=null
+StandardOutput=null
+StandardError=null
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

@@ -6,39 +6,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>XSSchat</title>
     <script defer src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="styles-refactor.css">
-    <script defer src="/scripts/build/scripts.js"></script>
+    <link rel="stylesheet" type="text/css" href="/build/styles/styles-refactor.css">
+    <script defer src="/build/scripts/app.js"></script>
 </head>
 
 <body>
-    <div id="overlay">
-        <div id="overlay">
-            <h1>XSSchat</h1>
-            <h2>Enter a room code and name:</h2>
-            <form id="joinform" action="">
-                <input placeholder="Room ID" type="text" id="roomcode" autocomplete="off" autocapitalize="none">
-                <input placeholder="Name" type="text" id="namefield" autocomplete="off">
-                <input type="submit" style="display: none" />
-                <!--<button>Enter</button>-->
-            </form>
-        </div>
-    </div>
-    <div class="container">
-        <ul id="chats"></ul>
-        <div id="history">
-            <h2>Script History</h2>
-            <ul id="scripthistory"></ul>
-        </div>
-    </div>
+    <div id="app"></div>
 
-    <button id="history-button"></button>
+    <template id="landing-template">
+        <div id="landing">
+            <div id="landing__container">
+                <h1>XSSchat</h1>
+                <h2>Enter a room code and name:</h2>
+                <form id="landing__form" action="">
+                    <input id="landing__form__room" placeholder="Room ID" type="text" autocomplete="off" autocapitalize="none">
+                    <input id="landing__form__name" placeholder="Name" type="text" autocomplete="off">
+                    <input type="submit" style="display: none" />
+                </form>
+            </div>
+        </div>
+    </template>
+    
+    <template id="chatroom-template">
+        <div id="chatroom__content">
+            <ul id="chats"></ul>
+            <div id="script-history__sidebar">
+                <button id="script-history__button"></button>
+                <h2>Script History</h2>
+                <ul id="script-history__list"></ul>
+            </div>
+        </div>
+        <form id="chatroom__form" action="">
+            <input id="chatroom__form__message" autocomplete="off">
+            <input id="chatroom__form__script-toggle" type="checkbox">
+            <label for="chatroom__form__script-toggle"></label>
+            <button>Send</button>
+        </form>
+    </template>
 
-    <form id="msgform" action="">
-        <input id="message" autocomplete="off">
-        <input id="toggle" type="checkbox">
-        <label for="toggle"></label>
-        <button>Send</button>
-    </form>
 </body>
 
 </html>

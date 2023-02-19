@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>XSSchat</title>
     <script defer src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <script defer src="scripts.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles-refactor.css">
+    <script defer src="/scripts/build/scripts.js"></script>
 </head>
 
 <body>
     <div id="overlay">
-        <div class="container">
+        <div id="overlay">
             <h1>XSSchat</h1>
             <h2>Enter a room code and name:</h2>
             <form id="joinform" action="">
@@ -24,11 +24,7 @@
         </div>
     </div>
     <div class="container">
-        <div id="canvas">
-            <ul id="chats"></ul>
-            <ul id="scripts"></ul>
-        </div>
-    
+        <ul id="chats"></ul>
         <div id="history">
             <h2>Script History</h2>
             <ul id="scripthistory"></ul>

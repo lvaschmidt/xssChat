@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "sass": "node-sass public/src/styles/main.scss public/build/styles/styles.css -w"
+    "sass": "node-sass src/styles/main.scss public/styles/styles.css -w"
   },
   "author": "Lysander Schmidt, Alex Foster, Jacob Singer",
   "license": "ISC",

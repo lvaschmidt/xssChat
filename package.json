@@ -5,8 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "sass-watch": "sass --source-map src/styles/main.scss public/styles/styles.css -w",
-    "sass-build": "sass --style=compressed src/styles/main.scss public/styles/styles.css"
+    "watch-sass": "sass --source-map src/styles/main.scss public/styles/styles.css -w",
+    "build-sass": "sass --no-source-map --style=compressed src/styles/main.scss public/styles/styles.css",
+    "watch-ts": "tsc --watch --sourceMap",
+    "build-ts": "tsc",
+    "watch": "concurrently \"npm:watch-*\"",
+    "build": "concurrently \"npm:build-*\""
   },
   "author": "Lysander Schmidt, Alex Foster, Jacob Singer",
   "license": "ISC",
@@ -17,5 +21,8 @@
     "sass": "^1.58.3",
     "socket.io": "^4.5.4",
     "typescript": "^4.9.5"
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0"
   }
 }

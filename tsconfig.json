@@ -5,10 +5,9 @@
     "noImplicitAny": true,
     "removeComments": true,
     "preserveConstEnums": true,
-    "sourceMap": false,
     "rootDir": "src/scripts",
     "outDir": "public/scripts"
   },
-  "include": ["src/scripts/"],
+  "include": ["src/scripts/*"],
   "exclude": ["node_modules"]
 }

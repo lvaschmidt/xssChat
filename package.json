@@ -1,5 +1,5 @@
 {
-  "name": "xssChat",
+  "name": "xsschat",
   "version": "1.0.0",
   "description": "Chat. With XSS.",
   "main": "index.js",

@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "sass": "node-sass src/styles/main.scss public/styles/styles.css -w"
+    "sass-watch": "sass --source-map src/styles/main.scss public/styles/styles.css -w",
+    "sass-build": "sass --style=compressed src/styles/main.scss public/styles/styles.css"
   },
   "author": "Lysander Schmidt, Alex Foster, Jacob Singer",
   "license": "ISC",
@@ -13,7 +14,7 @@
     "compression": "^1.7.4",
     "cors": "^2.8.5",
     "express": "^4.18.2",
-    "node-sass": "^8.0.0",
+    "sass": "^1.58.3",
     "socket.io": "^4.5.4",
     "typescript": "^4.9.5"
   }

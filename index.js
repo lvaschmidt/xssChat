@@ -38,13 +38,19 @@ const httpServer = http
   })
   .listen(80);
 
-const corsOptionsDelegate = function (req, callback) {
-  const corsOptions = { origin: "/.xsschat.com$/" }; // reflect (enable) the requested origin in the CORS response
-  callback(null, corsOptions); // callback expects two parameters: error and options
-};
+const whitelist = ['https://xsschat.com', 'https://beta.xsschat.com']
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  },
+}
 
 app.disable("x-powered-by");
-app.options("*", cors(corsOptionsDelegate));
+app.options("*", cors(corsOptions));
 app.use(express.static("public"));
 
 io.on("connection", (socket) => {

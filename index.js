@@ -26,7 +26,12 @@ if (process.env.NODE_ENV == "development") {
 const credentials = { key: privateKey, cert: certificate };
 const httpsServer = https.Server(credentials, app);
 
-const io = require("socket.io")(httpsServer, options);
+const io = require("socket.io")(httpsServer, {
+  cors: {
+    origin: ["https://xsschat.com", "https://beta.xsschat.com"],
+    methods: ["GET", "POST"]
+  }
+});
 const port = process.env.PORT || 443;
 
 // redirect any page from http to https
@@ -37,7 +42,6 @@ const httpServer = http
     res.end();
   })
   .listen(80);
-
 
 app.disable("x-powered-by");
 app.use(express.static("public"));

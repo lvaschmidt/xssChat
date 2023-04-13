@@ -28,7 +28,7 @@ const httpsServer = https.Server(credentials, app);
 
 const io = require("socket.io")(httpsServer, {
   cors: {
-    origin: ["https://xsschat.com", "https://beta.xsschat.com"],
+    origin: "/([a-z]\.)*xsschat.com/",
     methods: ["GET", "POST"]
   }
 });

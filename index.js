@@ -45,10 +45,6 @@ app.use(cors({
   origin: ["https://xsschat.com", "https://beta.xsschat.com"]
 }));
 
-app.disable("x-powered-by");
-app.options("*", cors(corsOptions));
-app.use(express.static("public"));
-
 io.on("connection", (socket) => {
   let room = null;
   socket.on("join", (data) => {

@@ -1,3 +1,4 @@
+require("dotenv/config");
 var cors = require("cors");
 const express = require("express");
 const compression = require("compression"); //depends on: compression
@@ -13,7 +14,7 @@ const https = require("https");
 
 //Differentiate between development and production
 if (process.env.NODE_ENV == "development") {
-  privateKey = fs.readFileSync("certs/localhost.key");
+  privateKey = fs.readFileSync("certs/localhost.decrypted.key");
   certificate = fs.readFileSync("certs/localhost.crt");
 } else {
   privateKey = fs.readFileSync("/etc/letsencrypt/live/xsschat.com/privkey.pem");

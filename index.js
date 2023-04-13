@@ -38,16 +38,11 @@ const httpServer = http
   })
   .listen(80);
 
-const whitelist = ['https://xsschat.com', 'https://beta.xsschat.com']
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true)
-    } else {
-      callback(new Error('Not allowed by CORS'))
-    }
-  },
-}
+app.disable("x-powered-by");
+app.use(express.static("public"));
+app.use(cors({
+  origin: ["https://xsschat.com", "https://beta.xsschat.com"]
+}));
 
 app.disable("x-powered-by");
 app.options("*", cors(corsOptions));
